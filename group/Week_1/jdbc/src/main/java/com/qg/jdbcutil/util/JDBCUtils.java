@@ -39,8 +39,8 @@ public class JDBCUtils {
     //获取一个数据库的连接对象Connection
 
     public static Connection getConnection() throws SQLException {
-        Connection connection = DriverManager.getConnection(url, username, password);
-        return connection;
+        return  DriverManager.getConnection(url, username, password);
+
     }
 
     //关闭所有资源

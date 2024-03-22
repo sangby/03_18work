@@ -81,3 +81,11 @@ void dList_display(Dlist L);
 //不全部声明了应该跑不起来
 void displaymenu_dList(int hilight);
 void displaymenu_sList(int hilight);
+
+//用于检查缓冲区里还有没有东西,以此证明输入是否正常
+int detect_illegal_input();
+
+
+//进阶操作
+void slist_Advanced_Operating(Slist *L);
+void dlist_Advanced_Operating(Dlist *L);

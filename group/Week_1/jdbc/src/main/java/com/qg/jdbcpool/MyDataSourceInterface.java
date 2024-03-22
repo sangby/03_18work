@@ -18,6 +18,7 @@ public interface MyDataSourceInterface extends DataSource {
     default <T> T unwrap(Class<T> iface) throws SQLException {
         return null;
     }
+
 //以下是默认方法,不必重写
     @Override
     default boolean isWrapperFor(Class<?> iface) throws SQLException {
