@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+     <div>
+<!--给后台发送请求-->
+         <!--如果有必要的话,后面再加点状态码-->
+         <button id = "GET" onclick = "makeRequest('GET',this)">GET->200</button>
+         <button id = "POST" onclick = "makeRequest('POST',this)">POST->303</button>
+         <button id = "PUT" onclick = "makeRequest('PUT',this)">PUT->404</button>
+         <button id = "DELETE" onclick = "makeRequest('DELETE',this)">DELETE->500</button>
+         <button id = "HEAD" onclick = "makeRequest('HEAD',this)">HEAD->204</button>
+         <button id = "OPTIONS" onclick = "makeRequest('OPTIONS',this)">OPTIONS->503</button>
+         <br>
+         <button id = "TRACE" onclick = "makeRequest('TRACE',this)">TRACE->503</button>
+         <<----这玩意用不了,说是为了安全考虑不允许从前端java代码中发起这种请求
+         <br>
+         <button id = "206" onclick = "makeRequest('GET',this)">GET->206</button>
+         <br>
+         <button id = "304" onclick = "makeRequest('GET',this)">GET->304</button>
+         <br>
+         <button id = "400" onclick = "makeRequest('GET',this)">GET->400</button>
+         <br>
+
+
+
+
+
+         <script>
+             function makeRequest(method,button) {
+
+                 var status = button.id
+                 var url = 'http://localhost:8080/QG_war_exploded/http?status='+encodeURIComponent(status);
+                 var xhr = new XMLHttpRequest();
+                 xhr.open(method, url, true);
+
+
+                 // 发送请求
+                 xhr.send();
+
+             }
+
+         </script>
+
+     </div>
+</body>
+</html>
