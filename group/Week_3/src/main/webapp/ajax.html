@@ -16,18 +16,14 @@
 
 <body>
 
-<!--<form id="app">-->
-<!--  用户名:<input type="text"  v-model = "inputValue" @keyup.enter = "sendData" placeholder="zhangsan/lisi/wangwu"> </input>-->
-<!--  <br>-->
-<!--</form>-->
-<!--  <input type="submit" value="提交"></input>-->
-<!--</form>-->
+
 <form >
 
-    请输入用户名:
+
     <div id="app">
-        <input v-model="inputValue" @keyup.enter="sendData" placeholder="zhangsan/lisi/wangwu"></input>
-        <button @click="sendData">提交</button>
+        用户名:
+        <input type="text" v-model="inputValue" onkeydown="if(event.keyCode==13){return false;}" placeholder="zhangsan/lisi/wangwu">
+        <button type="button" @click="sendData">提交</button>
         <br>
         <div v-if="responseData">
             <p>响应数据:{{responseData}}</p>
@@ -48,35 +44,15 @@
                 responseData:null
             },
             methods: {
-                // sendData() {
-                    //axios我投降了
-                    //     method = 'POST';
-                    //     var url = 'http://localhost:8080/QG_war_exploded/ajax?username='+encodeURIComponent(this.inputValue);
-                    //     var xhr = new XMLHttpRequest();
-                    //
-                    //     xhr.onreadystatechange = function(){
-                    //         if(xhr.readyState===4&&xhr.status===200){
-                    //             alert("成功没")
-                    //             this.responseData = xhr.responseText;
-                    //         }else{
-                    //             alert("为什么不成功")
-                    //         }
-                    //     }.bind(this);
-                    //     xhr.open(method, url, true);
-                    //     // 发送请求
-                    //     xhr.send();
-                    // }
+
                     sendData(){
 
                         if (this.inputValue) {
-                            axios.post('http://localhost:8080/QG_war_exploded/ajax', {data: this.inputValue})
+                            axios.get('http://localhost:8080/QG_war_exploded/ajax?username='+this.inputValue)
                                 .then(response => {
+
                                     this.responseData = response.data;
                                 })
-                                .catch(error => {
-                                    // 打印错误信息
-                                    console.error(error);
-                                });
                         }
 
                 }

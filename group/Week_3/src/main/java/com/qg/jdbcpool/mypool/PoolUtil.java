@@ -29,8 +29,13 @@ public abstract class PoolUtil {
             username = properties.getProperty("username");
             password = properties.getProperty("password");
             url = properties.getProperty("url");
+            //加载驱动
+            Class.forName("com.mysql.jdbc.Driver");
         } catch (IOException e) {
             e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            System.out.println("加载驱动失败");
+            throw new RuntimeException(e);
         } finally {
 
                 try {
@@ -46,9 +51,7 @@ public abstract class PoolUtil {
                     throw new RuntimeException(e);
                 }finally {
                     //
-                    System.out.println(url);
-                    System.out.println(username);
-                    System.out.println(password);
+
                 }
         }
     }

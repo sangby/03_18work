@@ -20,7 +20,7 @@ public class ServletAjax extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //接收数据
-        String username = request.getParameter("data");
+        String username = request.getParameter("username");
         if(username.equals("zhangsan")) System.out.println("咋没有输出的");
         else{
             System.out.println("啥意思");
@@ -34,6 +34,11 @@ public class ServletAjax extends HttpServlet {
             throw new RuntimeException(e);
         }
         //响应
+        if(us== null){
+            response.setStatus(400);
+        }else{
+            response.setStatus(200);
+        }
         response.setContentType("application/json;charset=utf-8");
         response.getWriter().write(JSON.toJSONString(us));
     }
